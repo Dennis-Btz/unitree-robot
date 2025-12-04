@@ -228,8 +228,8 @@ def main(cfg: DictConfig):
         observation_size=cfg.environment.observation_size,
         action_size=cfg.environment.action_size,
     ).to(device=device, dtype=T.float32)
-    # agent = PPOAgent(**cfg.agent).to(device=device, dtype=T.float32)
-    agent = PPOAgentTorcRL(**cfg.agent).to(device=device, dtype=T.float32)
+    agent = PPOAgent(**cfg.agent).to(device=device, dtype=T.float32)
+    # agent = PPOAgentTorcRL(**cfg.agent).to(device=device, dtype=T.float32)
     environment = MujocoMjxEnv(**cfg.environment)
     experiment = Go2WalkingExperiment(mjx_model = environment.mjx_model, **cfg.experiment)
     optimizer = optim.Adam(agent.parameters(), **cfg.optimizer)
